@@ -1,0 +1,223 @@
+[
+	{
+		"name": "bu1",
+		"title": "LWR Fuel Burnup/Utilization",
+		"subtitle": "GWd/t",
+		"value": [33,43],
+		"defaultvalue": 43,
+		"category": ""
+		,"model": ["lwr","fr","mox"]
+	},
+	{
+		"name": "cc1",
+		"title": "Overnight Cost",
+		"subtitle": "$/kWe",
+		"value": 3600,
+		"std": 552.3,
+		"min": 0,
+		"max": 10000,
+		"category":"",
+		"description":"",
+		"glossary_url": "",
+		"tootip":""
+		,"model": ["lwr","mox"]
+	},
+	{
+		"name": "com1",
+		"title": "Operation & Maintenance",
+		"subtitle": "Mill. $/GWe-yr",
+		"value": 80.4,
+		"std": 7.8,
+		"min": 0,
+		"max": 1500,
+		"category":"",
+		"description":"",
+		"glossary_url": "",
+		"tooltip":""
+		,"model": ["lwr","mox"]
+	},
+
+	{
+		"name":"c1",
+		"title": "Uranium Price",
+		"subtitle": "$/kgU",
+		"value": 122,
+		"std":50,
+		"min":0,
+		"max":600,
+		"category":"",
+		"description":"",
+		"glossary_url": "",
+		"tooltip": ""
+		,"model": "lwr"
+	},
+	{
+		"name": "ir",
+		"title": "Interest Rate",
+		"subtitle": "%",
+		"value": "0.050",
+		"std": "0.0170",
+		"min": 0,
+		"max": 1,
+		"category":"economic",
+		"description":"",
+		"glossary_url": "",
+		"tooltip": ""
+		,"model": ["lwr","fr","mox"],
+		"distribution":"log"
+	},
+	{
+		"name":"c2",
+		"title": "UF6 Conversion Cost",
+		"subtitle": "$/kgU",
+		"value":10,
+		"std":2,
+		"min": 0,
+		"max": 20,
+		"category":"",
+		"description":"",
+		"glossary_url": "",
+		"tooltip": ""
+		,"model": ["lwr","mox"]
+	},
+	{
+		"name": "c3",
+		"title":"Enrichment Cost",
+		"subtitle": "$/SWU",
+		"value":29.59,
+		"std":2.7438,
+		"min":0,
+		"max": 200,
+		"category":"",
+		"description":"",
+		"glossary_url": "",
+		"tooltip": ""
+		,"model": "lwr"
+	},
+	{
+		"name": "c4",
+		"title": "LWR Fuel Fabrication Cost",
+		"subtitle": "$/kgHM",
+		"value": 250,
+		"std": 20.4,
+		"min": 0,
+		"max":500,
+		"category":"ffCost",
+		"description":"",
+		"glossary_url": "",
+		"tooltip": ""
+		,"model": "lwr"
+	},
+	{
+		"name": "c5",
+		"title": "Spent Fuel Interim Dry Storage Cost",
+		"subtitle": "$/kgHM",
+		"value": "173.0",
+		"std": "45.0",
+		"min":0,
+		"max":500,
+		"category":"Cost",
+		"description":"",
+		"glossary_url": "",
+		"tooltip":""
+		,"model": ["lwr","mox"]
+	},
+	{
+		"title":"Geologic Disposal Cost",
+		"name": "cwl",
+		"subtitle":"Mill.$/kWe-hr",
+		"value":"1.00",
+		"std":"0.00",
+		"min":0,
+		"max":2.0,
+		"category":"Cost",
+		"description":"",
+		"glossary_url": "",
+		"tooltip":""
+		,"model": ["lwr","mox","fr"]
+	},
+	{
+		"name":"cfpcond",
+		"title": "Fissile Product Conditioning Cost",
+		"subtitle":"$/kg FP",
+		"value": 4600,
+		"std": 909.2,
+		"min": 0,
+		"max": 11000,
+		"category":"Cost",
+		"description":"",
+		"glossary_url": "",
+		"tooltip":""
+		,"model": ["lwr","fr","mox"]
+	},
+	{
+		"name": "tcons",
+		"title": "Reactor Construction Time",
+		"subtitle": "In Yrs.",
+		"value": 7,
+		"std": 0.7,
+		"min": 0,
+		"max": 30,
+		"category":"",
+		"description":"",
+		"glossary_url": "",
+		"tooltip":""
+		,"model": ["lwr","fr","mox"]
+	},
+	{
+		"name": "tecons",
+		"title": "Reactor Economic Lifetime",
+		"subtitle": "In Yrs.",
+		"value": 30,	
+		"std":3,
+		"min":0,
+		"max":100,
+		"category":"",
+		"description":"",
+		"glossary_url": "",
+		"tooltip":""
+		,"model": ["lwr","fr","mox"]
+	},
+	{"name":"cr" ,"title":"LWR Reactor Capacity", "subtitle": "MWe/yr","value":1000,"std":0, "min":0, "max":5000,"category":"","description":"","glossary_url":"","tooltip":"", "model": ["lwr","fr","mox"]},
+	{"name":"cf1" ,"title":"LWR Capacity Factor", "subtitle": "","value":0.9, "min":0, "max":1,"category":"","description":"","glossary_url":"","tooltip":"","model": ["lwr","fr","mox"]},
+	{"name":"eff1" , "title":"LWR Thermal Efficiency", "subtitle":"", "value":0.32, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": ["lwr","fr","mox"]},
+	{"name":"lwrinv" , "title":"LWR Inventory", "subtitle":"kgHM/MWe", "value":78,"std":"0.0", "min":0, "max":500, "category":"","description":"", "glossary_url":"","tooltip":"","model": ["lwr","mox"]},
+	{"name":"fff" , "title": "Fabrication Loss", "subtitle":"", "value":0.01, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "lwr"},
+	{"name":"fswu" , "title": "Enrichment Loss", "subtitle":"", "value":0.005, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "lwr"},
+	{"name":"fcon" , "title":"Conversion Loss", "subtitle": "", "value":0.005, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "lwr"},
+	{"name":"xf" , "title": "Feed Enrichment", "subtitle": "%w/f of U235 in feed", "value":0.00711, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "lwr"},
+	{"name":"xw" , "title":"Tails Enrichment", "subtitle":"%w/f of U235 in tails", "value":0.003, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "lwr"},
+	{"name":"bu2" , "title":"FR Fuel Burnup/Utilization", "subtitle":"GWd/t", "value":[100,150], "defaultvalue":100 ,"category":"","description":"", "glossary_url":"","tooltip":"", "model": "fr"},
+	{"name":"cs" , "title":"Spent LEU Reprocessing Cost", "subtitle":"$/kgHM", "value":1121, "min":0, "max":2000,"std":89, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"cc2" , "title":"Overnight Cost", "subtitle":"$/kWe", "value":4733, "std":838,"min":0, "max":8000, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"com2" , "title":"FR Operation & Maintenance", "subtitle":"Mill. $ /GWe-yr", "value":86.7,"std":7.8,"min":0, "max":1500, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"fr1" , "title":"Fuel Reprocessing", "subtitle":"$/kgHM", "value":6000,"std":1224, "min":0, "max":10000, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"ff1" , "title":"FR Fuel Fabrication Cost", "subtitle":"$/kgHM", "value": 4400,"std":588.8, "min":0, "max":5000, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"title":"High Level Waste Disposal Cost"
+	{"name":"cf2" , "title":"FR Capacity Factor", "subtitle":"", "value":0.9, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"eff2" , "title":"FR Thermal Efficiency", "subtitle":"", "value":0.38, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"frtruinv" , "title":"Transuranic(TRU) Waste Inventory", "subtitle":"Metric Tons TRU/GWe", "value":7.5, "min":0, "max":20, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"freppu" , "title":"Loss of TRU during LEU Reprocessing", "subtitle":"", "value":0.005, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"fdrvpu" , "title":"Loss of TRU in FR Fuel Fabrication", "subtitle":"", "value":0.005, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"frdrvpu" , "title":"Loss of TRU in FR Fuel Reprocessing", "subtitle":"", "value":0.005, "min":0, "max":1, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{"name":"frcr" , "title":"Conversion Ratio", "subtitle":"", "value":[0,0.25,0.50,0.75,0.99], "defaultvalue":0.75, "category":"","description":"", "glossary_url":"","tooltip":"","model": "fr"},
+	{
+		"name":"fmoxpu",  
+		"title":"Pu Loss during MOX Fuel Fabrication",
+		"subtitle":"",
+		"value":0.005,
+		"min":0,
+		"max":1,
+		"category":"",
+		"description":"",
+		"glossary_url": "",
+		"tooltip":"",
+		"model": "mox"
+	},
+	{"name":"cb1" , "title":"MOX Fuel Fabrication Cost", "subtitle":"$/kgHM", "value":3733, "min":0, "max":8000,"std":500 ,"category":"","description":"", "glossary_url":"","tooltip":"","model":"mox"},
+	{"name":"bu3" , "title":"MOX Fuel Burnup/Utilization", "subtitle":"GWd/t", "value":[33,43,53],"defaultvalue":43, "category":"","description":"", "glossary_url":"","tooltip":"","model":"mox"}
+
+
+	
+
+]

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset='utf-8'>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	if (typeof jQuery == "undefined")
+		document.write("<script src='lib/js/jquery-2.1.1.min.js' type='text/javascript'%3E%3C/script%3E");
+</script>	
+<link href='lib/css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main.css' rel='stylesheet'>
+<link href='css/data.css' rel='stylesheet'>
+<script src="lib/js/d3.v3.min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="js/params.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/common.js"></script>
+<script src="js/download.js"></script>
+<script src="js/lwr.js"></script>
+<script src="js/fr.js"></script>
+<script src="js/mox.js"></script>
+<script src="js/data.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52701205-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="http://thebulletin.org" >Bulletin of Atomic Scientists</a>
+
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="model.html">Model</a></li>
+				<li class="active"><a href="#">Data</a></li>
+			</ul>
+
+		</div>
+	</nav>
+<div class="orangebar"></div>
+<!--<div class="sidebar"></div>-->
+
+<div id="dataloader" class="sidebutton first dropdown">
+	<button type="button" class="btn btn-default dropdown-toggle" id = "menu" data-toggle="dropdown">
+		<i class="fa fa-bars"></i>&nbsp;Datasets
+	</button>
+		<ul id="ddropdown" class="dropdown-menu" role="menu" aria-labelledby="menu">
+		</ul>
+</div>
+
+<div id="downloader" class="sidebutton second dropdown">
+	<button type="button" class="btn btn-default dropdown-toggle" id = "menu" data-toggle="dropdown">
+		<i class="fa fa-download"></i>&nbsp;Download <br> Parameters
+	</button>
+</div>
+
+<div id="logo"></div>
+	<div id="dtoptoppane">
+		<h1>Parameters</h1>
+On this page, we<p>
+(1) illustrate the sensitivity of the cost of electricity to some of the key
+   parameters governing the economics of nuclear power,<p>
+(2) detail the full list of parameter that figure in our cost of electricity
+calculations, which we refer to as the Baseline Data.
+	<hr>
+
+	<div class="spacer"></div>
+	<div class="spacer"></div>
+	<h2>I. Key Parameter Sensitivities</h2>
+	<div class="burb"> 
+		All entries are in US. cents per kW-hr
+	</div>
+	<div id="resultsContainer"></div>
+
+	<hr>
+	<h2>II. Baseline Data</h2>
+	<br>
+	Baseline data used in the models is presented below. The nominal
+	numbers you see were provided courtesy of the Nuclear Engineering Division at the Dept. of Energy's Argonne National Laboratory. Slightly older data is available by clicking on the 'Datasets' button on the right side of the page. Values can be edited to calculate new costs in the tables above and downloaded for later reference.
+
+		<div class="spacer"></div>
+		<div class="spacer"></div>
+		<div style="color:blue;">Click values to edit</div>
+
+	</div>
+	<div id="dtoppane"></div>
+	<div id="dbottomtoppane">
+	</div>
+	<div id="dbottompane" >
+
+		<!--
+		<div class="tableLegend">
+		</div>
+		-->
+
+	</div>
+<script>
+
+
+	//enable download button
+	d3.select("#downloader").on("click", function(){
+		doCSV();
+	});
+	//
+	doResTables();
+
+	loadDatasets("data/datasets.json");
+</script>
+
+</body>

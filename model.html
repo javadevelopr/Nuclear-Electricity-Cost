@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset='utf-8'>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	if (typeof jQuery == "undefined")
+		document.write("<script src='lib/js/jquery-2.1.1.min.js' type='text/javascript'%3E%3C/script%3E");
+</script>	
+<link href='lib/css/bootstrap.min.css' rel='stylesheet'>
+<link href='css/main.css' rel='stylesheet'>
+<link href='css/model.css' rel='stylesheet'>
+<script src="lib/js/d3.v3.min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="js/params.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/common.js"></script>
+<script src="js/events.js"></script>
+<script src="js/update.js"></script>
+<script src="js/coreUI.js"></script>
+<script src="js/download.js"></script>
+<script src="js/scatter.js"></script>
+<script src="js/spline.js"></script>
+<script src="js/main.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52701205-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<div id="dataloader" class="sidebutton first dropdown">
+	<button type="button" class="btn btn-default dropdown-toggle" id = "menu" data-toggle="dropdown">
+		<i class="fa fa-bars"></i>&nbsp;Datasets
+	</button>
+	<ul id="ddropdown" class="dropdown-menu" role="menu" aria-labelledby="menu">
+	</ul>
+</div>
+<div id="downloader" class="sidebutton second dropdown">
+	<button type="button" class="btn btn-default dropdown-toggle" id = "menu" data-toggle="dropdown">
+		<i class="fa fa-download"></i>&nbsp;Download <br> Parameters
+	</button>
+</div>
+<div id="npaneSelector" >
+	<button type="button" class="btn btn-default sidebutton fourth " onclick="setScatter();">
+		<i class="fa fa-circle-thin" style="font-size:10px"></i>
+		<span id="psts" class="pst active">Scatter</span>
+	</button>
+	<button type="button" class="btn btn-default sidebutton fifth" onclick="setGraph();">
+		<i class="fa fa-bar-chart-o"></i>
+		<span id="pstg" class="pst">Distribution</span>
+	</button>
+
+</div>
+
+
+
+
+
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="http://thebulletin.org" >Bulletin of Atomic Scientists</a>
+
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="index.html">Home</a></li>
+				<li class="active"><a href="#">Model</a></li>
+				<li><a href="data.html">Data</a></li>
+			</ul>
+
+		</div>
+	</nav>
+	<div class="orangebar"></div>
+
+<div id="logo"></div>
+<svg id="legend"></svg>
+<div id="spinner">
+	<img src="img/spinner.gif">
+</div>
+
+<div id="topContent">
+
+<h1>The Model</h1>
+Select the type of LWR (Once-through, Full Recycle or Mixed Oxide fuel) and slide
+the blue bars in the panel below to select values for the parameter inputs. 
+Slide the white std bars
+to adjust the uncertainty of each parameter. 
+All parameters are modeled as normally distributed with the exception of Interest Rates
+which are assumed to have a log-normal distribution.
+To run the the base models without stochastic
+parameters click on the 'Use deterministic parameters' button to set all standard deviations
+to 0.
+The scatter graph plots the simulated fuel cost for each sample run against the value of a parameter (use the controls
+on the x-axis to change the parameter reference). Hover on each scatter point to slide all parameters to the values simulated for that run (click on each point to fix that point).
+Clicking 'Distribution' on the left side panel displays a probability density function
+for the fuel costs. The higher the sample size the more robust the results.
+The base values reflect the most up to date figures we were able to obtain for each parameter. To use
+data from previous studies as a starting point, use the Datasets loader on the left side of the page.
+
+</div>
+
+
+
+<div class="xpanel" >
+	<svg class="scatterPane"></svg>
+	<svg class="graphPane"></svg>
+</div>
+<!--<div class="spacer"></div>-->
+
+<div class="xcontrols">
+	<ul class="pagination">
+		<li class="disabled"><a>LWR Model:</a></li>
+	</ul>
+
+
+
+	<div class="auxpanel">
+		<div class="aux">
+			<button type="button" class="btn btn-info" id="resetToDefaults">Reset to<br> defaults values</button>
+		</div>
+		<div class="aux">
+			<button type="button" class="btn btn-info" id="changeModelType">Use deterministic<br> parameters</button>
+		</div>
+	</div>
+
+	<div class = "slider-legend">
+		<div class="slider-legend-bar colorb"></div><div class="mus">Mean</div>
+		<div class="slider-legend-bar neutralb"></div><div class="stds">Std.Dev.</div>
+	</div>
+	<div class="toppanel"></div>
+
+
+
+	<div class="container-fluid">
+		<div class="row">
+		</div>
+	</div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+	var visited = sessionStorage.bas_lwr_stoch_visited;
+	if(typeof visited === "undefined" || !visited){
+		sessionStorage.bas_lwr_stoch_visited=true;
+	}
+
+	$("#backToTop").click(function(){
+		$('body,html').animate({"scrollTop": 0},1000);
+	});
+	
+	//init some page elements
+	initColumns();
+	toggleUnits();
+	drawLegend();
+
+	//enable download button
+	d3.select("#downloader").on("click", function(){
+		doCSV();
+	});
+
+	//use deterministic and reset buttons
+	d3.select("#changeModelType").on("click", function(){toggleState()});
+	d3.select("#resetToDefaults").on("click", function(){ toggleDefaults()});
+
+	loadDatasets("data/datasets.json");				
+
+});
+
+
+
+
+
+
+
+
+	
+</script>

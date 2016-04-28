@@ -1,2 +1,3 @@
-# nuclearFuel_d3Project
-Javascript files for nuclear fuel cost calculator
+# Synopsis
+Javascript source files for nuclear fuel cost calculator:
+	[http://thebulletin.org/nuclear-fuel-cycle-cost-calculator/]

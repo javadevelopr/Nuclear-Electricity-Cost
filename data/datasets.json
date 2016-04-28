@@ -1,0 +1,24 @@
+[
+	{
+		"name": "us2007",
+		"title": "US 2007",
+		"filename": "data/us2007.json",
+		"source": "Nuclear Engineering div., Argonne National Laboratory",
+		"blurb": ""
+	},
+	{
+		"name": "us2012",
+		"title": "US 2012",
+		"filename": "data/us2012.json",
+		"source": "Nuclear Engineering div., Argonne National Laboratory",
+		"blurb": "",
+		"defaultfile": "true"
+	},
+	{
+		"name": "us2009",
+		"title": "US 2009",
+		"filename": "data/us2009mit.json",
+		"source": "MIT Energy Initiative: Update of the 2003 Future of Nuclear Power Report",
+		"blurb": ""
+	}
+]
